@@ -13,10 +13,15 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const userData = localStorage.getItem("user");
+    const isAnonymous = localStorage.getItem("isAnonymous");
 
-    if (token && userData) {
+    if (userData) {
       setUser(JSON.parse(userData));
-      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+      // Only set auth header if user has a token (not anonymous)
+      if (token && !isAnonymous) {
+        api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      }
     }
     setLoading(false);
   }, []);
@@ -59,9 +64,24 @@ export const AuthProvider = ({ children }) => {
     return user;
   };
 
+  const anonymousLogin = () => {
+    const anonymousUser = {
+      username: "Anonymous User",
+      email: "anonymous@safehaven.local",
+      isAnonymous: true,
+      readOnly: true,
+    };
+
+    localStorage.setItem("user", JSON.stringify(anonymousUser));
+    localStorage.setItem("isAnonymous", "true");
+    setUser(anonymousUser);
+    return anonymousUser;
+  };
+
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("isAnonymous");
     delete api.defaults.headers.common["Authorization"];
     setUser(null);
   };
@@ -70,6 +90,7 @@ export const AuthProvider = ({ children }) => {
     user,
     login,
     googleLogin,
+    anonymousLogin,
     register,
     logout,
     loading,

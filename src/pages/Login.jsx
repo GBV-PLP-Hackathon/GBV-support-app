@@ -10,7 +10,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { login, googleLogin } = useAuth();
+  const { login, googleLogin, anonymousLogin } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -50,6 +50,11 @@ const Login = () => {
 
   const handleGoogleError = () => {
     setError("Google login failed. Please try again or use email/password.");
+  };
+
+  const handleAnonymousLogin = () => {
+    anonymousLogin();
+    navigate("/dashboard");
   };
 
   return (
@@ -157,6 +162,16 @@ const Login = () => {
               className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white py-4 rounded-lg transition-all shadow-lg hover:shadow-xl uppercase tracking-wide disabled:bg-gray-400"
             >
               {loading ? "Signing In..." : "Sign In Securely"}
+            </button>
+
+            {/* Anonymous Login Button */}
+            <button
+              type="button"
+              onClick={handleAnonymousLogin}
+              className="w-full mt-4 bg-gray-100 hover:bg-gray-200 text-gray-700 py-4 rounded-lg transition-all border-2 border-gray-300 hover:border-gray-400 uppercase tracking-wide flex items-center justify-center gap-2"
+            >
+              <Shield className="w-5 h-5" />
+              Browse Anonymously (Read-Only)
             </button>
 
             {/* Divider */}

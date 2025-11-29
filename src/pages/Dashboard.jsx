@@ -29,6 +29,24 @@ const Dashboard = () => {
           <p className="text-xl text-gray-600">
             Your safe space for support, resources, and healing
           </p>
+          {user?.isAnonymous && (
+            <div className="mt-4 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+              <div className="flex items-start gap-3">
+                <Shield className="w-5 h-5 text-blue-700 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm text-blue-800">
+                    <span className="font-semibold">Anonymous Mode:</span> You
+                    have read-only access. Features like journal, community
+                    posts, and safety planning are view-only.
+                    <Link to="/register" className="underline ml-1">
+                      Create an account
+                    </Link>{" "}
+                    for full access.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Quick Access Grid */}
