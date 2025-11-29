@@ -1,104 +1,262 @@
 // frontend/src/pages/Dashboard.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import SafetyBanner from '../components/SafetyBanner';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import SafetyBanner from "../components/SafetyBanner";
+import {
+  Phone,
+  Shield,
+  Book,
+  Heart,
+  Users,
+  FileText,
+  ArrowRight,
+  TrendingUp,
+} from "lucide-react";
 
 const Dashboard = () => {
   const { user } = useAuth();
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gray-50">
       <SafetyBanner />
-      
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">
-          Welcome, {user?.username}
-        </h1>
-        <p className="text-gray-600 mb-8">Your safe space for support and resources</p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      <div className="container mx-auto px-6 py-12 max-w-7xl">
+        <div className="mb-12">
+          <h2 className="text-4xl text-gray-900 mb-3">
+            Welcome Back, {user?.username}
+          </h2>
+          <p className="text-xl text-gray-600">
+            Your safe space for support, resources, and healing
+          </p>
+        </div>
+
+        {/* Quick Access Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           <Link
             to="/emergency"
-            className="bg-red-600 hover:bg-red-700 text-white p-6 rounded-lg shadow-lg transition"
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all group"
           >
-            <div className="text-4xl mb-3">🚨</div>
-            <h3 className="text-2xl font-bold mb-2">Emergency Help</h3>
-            <p>Access crisis hotlines and immediate support</p>
+            <div className="h-2 bg-gradient-to-r from-red-600 to-red-700"></div>
+            <div className="p-8">
+              <div className="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Phone className="w-8 h-8 text-red-600" />
+              </div>
+              <h3 className="text-2xl text-gray-900 mb-3">Emergency Help</h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                24/7 crisis hotlines, panic button, and location-based emergency
+                services. Immediate help when you need it most.
+              </p>
+              <div className="flex items-center gap-2 text-red-600 group-hover:gap-3 transition-all">
+                <span className="text-sm uppercase tracking-wide">
+                  Get Help Now
+                </span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
           </Link>
 
           <Link
             to="/safety-planning"
-            className="bg-purple-600 hover:bg-purple-700 text-white p-6 rounded-lg shadow-lg transition"
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all group"
           >
-            <div className="text-4xl mb-3">🛡️</div>
-            <h3 className="text-2xl font-bold mb-2">Safety Planning</h3>
-            <p>Create your personalized safety plan</p>
+            <div className="h-2 bg-gradient-to-r from-purple-600 to-purple-700"></div>
+            <div className="p-8">
+              <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Shield className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-2xl text-gray-900 mb-3">Safety Planning</h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Create your personalized safety plan
+              </p>
+              <div className="flex items-center gap-2 text-purple-600 group-hover:gap-3 transition-all">
+                <span className="text-sm uppercase tracking-wide">
+                  Start Planning
+                </span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
           </Link>
 
           <Link
             to="/abuse-types"
-            className="bg-blue-600 hover:bg-blue-700 text-white p-6 rounded-lg shadow-lg transition"
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all group"
           >
-            <div className="text-4xl mb-3">📚</div>
-            <h3 className="text-2xl font-bold mb-2">Learn About Abuse</h3>
-            <p>Understanding different forms of violence</p>
+            <div className="h-2 bg-gradient-to-r from-blue-600 to-blue-700"></div>
+            <div className="p-8">
+              <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Book className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-2xl text-gray-900 mb-3">Learn About GBV</h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Understanding different forms of violence
+              </p>
+              <div className="flex items-center gap-2 text-blue-600 group-hover:gap-3 transition-all">
+                <span className="text-sm uppercase tracking-wide">
+                  Learn More
+                </span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
           </Link>
 
           <Link
             to="/resources"
-            className="bg-green-600 hover:bg-green-700 text-white p-6 rounded-lg shadow-lg transition"
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all group"
           >
-            <div className="text-4xl mb-3">🤝</div>
-            <h3 className="text-2xl font-bold mb-2">Resources</h3>
-            <p>Find local and national support services</p>
+            <div className="h-2 bg-gradient-to-r from-green-600 to-green-700"></div>
+            <div className="p-8">
+              <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Heart className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-2xl text-gray-900 mb-3">Resources</h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Find local and national support services
+              </p>
+              <div className="flex items-center gap-2 text-green-600 group-hover:gap-3 transition-all">
+                <span className="text-sm uppercase tracking-wide">
+                  Find Support
+                </span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
           </Link>
 
           <Link
             to="/support-community"
-            className="bg-indigo-600 hover:bg-indigo-700 text-white p-6 rounded-lg shadow-lg transition"
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all group"
           >
-            <div className="text-4xl mb-3">💬</div>
-            <h3 className="text-2xl font-bold mb-2">Support Community</h3>
-            <p className="mb-3">Live Chat Room - Share how you feel or your experiences safely</p>
+            <div className="h-2 bg-gradient-to-r from-indigo-600 to-indigo-700"></div>
+            <div className="p-8">
+              <div className="w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Users className="w-8 h-8 text-indigo-600" />
+              </div>
+              <h3 className="text-2xl text-gray-900 mb-3">Community</h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Connect and share in a safe moderated space
+              </p>
+              <div className="flex items-center gap-2 text-indigo-600 group-hover:gap-3 transition-all">
+                <span className="text-sm uppercase tracking-wide">
+                  Join Now
+                </span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
           </Link>
 
           <Link
             to="/journal"
-            className="bg-orange-600 hover:bg-orange-700 text-white p-6 rounded-lg shadow-lg transition"
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all group"
           >
-            <div className="text-4xl mb-3">📝</div>
-            <h3 className="text-2xl font-bold mb-2">Journal</h3>
-            <p className="mb-3">Document your journey safely</p>
+            <div className="h-2 bg-gradient-to-r from-orange-600 to-orange-700"></div>
+            <div className="p-8">
+              <div className="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <FileText className="w-8 h-8 text-orange-600" />
+              </div>
+              <h3 className="text-2xl text-gray-900 mb-3">Journal</h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Document your journey safely and privately
+              </p>
+              <div className="flex items-center gap-2 text-orange-600 group-hover:gap-3 transition-all">
+                <span className="text-sm uppercase tracking-wide">
+                  Start Writing
+                </span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
           </Link>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            Quick Safety Reminders
-          </h2>
-          <ul className="space-y-3 text-gray-700">
-            <li className="flex items-start">
-              <span className="text-purple-600 mr-2">✓</span>
-              <span>Use the Quick Exit button (ESC key) if you need to leave quickly</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-600 mr-2">✓</span>
-              <span>This platform doesn't store browsing history in your browser</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-600 mr-2">✓</span>
-              <span>Clear your search history and cookies after using shared devices</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-600 mr-2">✓</span>
-              <span>Consider using incognito/private browsing mode</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-purple-600 mr-2">✓</span>
-              <span>Have a safety plan ready - it can save your life</span>
-            </li>
-          </ul>
+        {/* Activity & Stats Section */}
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 border border-purple-200">
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="text-gray-900">Safety Progress</h4>
+              <TrendingUp className="w-5 h-5 text-purple-600" />
+            </div>
+            <div className="text-4xl text-purple-700 mb-2">67%</div>
+            <p className="text-gray-600 text-sm">
+              8 of 12 checklist items completed
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 border border-orange-200">
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="text-gray-900">Journal Entries</h4>
+              <FileText className="w-5 h-5 text-orange-600" />
+            </div>
+            <div className="text-4xl text-orange-700 mb-2">4</div>
+            <p className="text-gray-600 text-sm">Keep tracking your journey</p>
+          </div>
+
+          <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl p-8 border border-indigo-200">
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="text-gray-900">Community Posts</h4>
+              <Users className="w-5 h-5 text-indigo-600" />
+            </div>
+            <div className="text-4xl text-indigo-700 mb-2">2</div>
+            <p className="text-gray-600 text-sm">Connections made safely</p>
+          </div>
+        </div>
+
+        {/* Recent Activity & Tips */}
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <h3 className="text-2xl text-gray-900 mb-6">Recent Activity</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4 p-4 bg-purple-50 rounded-lg">
+                <div className="w-2 h-2 bg-purple-600 rounded-full mt-2"></div>
+                <div>
+                  <p className="text-gray-900">Safety Planning Updated</p>
+                  <p className="text-sm text-gray-600">2 hours ago</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-4 bg-orange-50 rounded-lg">
+                <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
+                <div>
+                  <p className="text-gray-900">New Journal Entry</p>
+                  <p className="text-sm text-gray-600">1 day ago</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-4 bg-green-50 rounded-lg">
+                <div className="w-2 h-2 bg-green-600 rounded-full mt-2"></div>
+                <div>
+                  <p className="text-gray-900">Viewed Resources</p>
+                  <p className="text-sm text-gray-600">2 days ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <h3 className="text-2xl text-gray-900 mb-6">Safety Tips</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                <Shield className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                <p className="text-gray-700 text-sm">
+                  Use secure passwords and enable 2FA
+                </p>
+              </div>
+              <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                <Shield className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                <p className="text-gray-700 text-sm">
+                  Clear browser history regularly
+                </p>
+              </div>
+              <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                <Shield className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                <p className="text-gray-700 text-sm">
+                  Have emergency contacts memorized
+                </p>
+              </div>
+              <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                <Shield className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                <p className="text-gray-700 text-sm">
+                  Trust your instincts always
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
